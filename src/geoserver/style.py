@@ -46,11 +46,11 @@ class Style(ResourceInfo):
         return Style.content_types[self.style_format]
 
     def _build_href(self, extension, create=False):
-        url_part = "styles"
+        url_part = "styles/"
         if not create:
             url_part += "{}{}".format(self.name, extension)
         else:
-            url_part = "?name={}".format(self.name)
+            url_part += "?name={}".format(self.name)
         if self.workspace is not None:
             url_part = "workspaces/{}/{}".format(
                 getattr(self.workspace, 'name', self.workspace),
