@@ -14,7 +14,7 @@ setup(
     version='1.0.8.dev1',
     description = "GeoServer REST Configuration",
     long_description = readme_text,
-    url='https://github.com/dimitri-justeau/gsconfig-py3',
+    url='https://github.com/quadratic-be/gsconfig-py3',
     author='Dimitri Justeau (IAC/AMAP)',
     author_email='dimitri.justeau@gmail.com',
     maintainer='Renato Primavera (Quadratic)',
