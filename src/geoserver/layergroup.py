@@ -78,7 +78,10 @@ class LayerGroup(ResourceInfo):
             'layers': lambda b, l: _write_layers(b, l, parent,
                                                  element, attributes),
             'bounds': write_bbox("bounds"),
-            'workspace': write_string("workspace")
+            'workspace': write_string("workspace"),
+			'mode': write_string("mode"),
+            'abstractTxt': write_string("abstractTxt"),
+            'title': write_string("title")
         }
 
     @property
@@ -95,6 +98,9 @@ class LayerGroup(ResourceInfo):
 
     styles = xml_property("styles", _style_list)
     bounds = xml_property("bounds", bbox)
+	mode = xml_property("mode")
+    abstract = xml_property("abstractTxt")
+    title = xml_property("title")
 
     @property
     def layers(self):
@@ -126,7 +132,7 @@ class UnsavedLayerGroup(LayerGroup):
 
     save_method = settings.POST
 
-    def __init__(self, catalog, name, layers, styles, bounds, workspace=None):
+    def __init__(self, catalog, name, layers, styles, bounds, mode=None, abstract=None, title=None, workspace=None):
         super(UnsavedLayerGroup, self).__init__(
             catalog,
             name,
@@ -134,8 +140,15 @@ class UnsavedLayerGroup(LayerGroup):
         )
         if bounds is None:
             bounds = ("-180", "180", "-90", "90", "EPSG:4326")
-        self.dirty.update(name=name, layers=layers, styles=styles,
-                          bounds=bounds, workspace=workspace)
+        self.dirty.update(
+			name=name, 
+			layers=layers, 
+			styles=styles,
+            bounds=bounds, 
+			workspace=workspace,
+			mode=mode.upper(),
+            abstractTxt=abstract,
+            title=title)
 
     @property
     def href(self):
