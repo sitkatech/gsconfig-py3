@@ -79,7 +79,6 @@ class LayerGroup(ResourceInfo):
                                                  element, attributes),
             'bounds': write_bbox("bounds"),
             'workspace': write_string("workspace"),
-            'mode': write_string("mode"),
             'abstractTxt': write_string("abstractTxt"),
             'title': write_string("title")
         }
@@ -98,7 +97,6 @@ class LayerGroup(ResourceInfo):
 
     styles = xml_property("styles", _style_list)
     bounds = xml_property("bounds", bbox)
-    mode = xml_property("mode")
     abstract = xml_property("abstractTxt")
     title = xml_property("title")
 
@@ -132,7 +130,7 @@ class UnsavedLayerGroup(LayerGroup):
 
     save_method = settings.POST
 
-    def __init__(self, catalog, name, layers, styles, bounds, mode=None, abstract=None, title=None, workspace=None):
+    def __init__(self, catalog, name, layers, styles, bounds, abstract=None, title=None, workspace=None):
         super(UnsavedLayerGroup, self).__init__(
             catalog,
             name,
@@ -146,7 +144,6 @@ class UnsavedLayerGroup(LayerGroup):
             styles=styles,
             bounds=bounds, 
             workspace=workspace,
-            mode=mode.upper(),
             abstractTxt=abstract,
             title=title)
 
