@@ -79,7 +79,7 @@ class LayerGroup(ResourceInfo):
                                                  element, attributes),
             'bounds': write_bbox("bounds"),
             'workspace': write_string("workspace"),
-			'mode': write_string("mode"),
+            'mode': write_string("mode"),
             'abstractTxt': write_string("abstractTxt"),
             'title': write_string("title")
         }
@@ -98,7 +98,7 @@ class LayerGroup(ResourceInfo):
 
     styles = xml_property("styles", _style_list)
     bounds = xml_property("bounds", bbox)
-	mode = xml_property("mode")
+    mode = xml_property("mode")
     abstract = xml_property("abstractTxt")
     title = xml_property("title")
 
@@ -141,12 +141,12 @@ class UnsavedLayerGroup(LayerGroup):
         if bounds is None:
             bounds = ("-180", "180", "-90", "90", "EPSG:4326")
         self.dirty.update(
-			name=name, 
-			layers=layers, 
-			styles=styles,
+            name=name, 
+            layers=layers, 
+            styles=styles,
             bounds=bounds, 
-			workspace=workspace,
-			mode=mode.upper(),
+            workspace=workspace,
+            mode=mode.upper(),
             abstractTxt=abstract,
             title=title)
 
