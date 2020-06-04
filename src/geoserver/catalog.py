@@ -195,7 +195,7 @@ class Catalog:
         rest_url = obj.href
         message = obj.message()
         save_method = obj.save_method
-        LOGGER.debug("{} {}".format(save_method, rest_url))
+        LOGGER.debug("{} {}".format(save_method, rest_url))
         methods = {
             settings.POST: self.session.post,
             settings.PUT: self.session.put
@@ -699,11 +699,11 @@ class Catalog:
             "Accept": "application/xml"
         }
         resource_url = store.resource_url
+        params = dict()
         if jdbc_virtual_table is not None:
             feature_type.metadata = ({
                 'JDBC_VIRTUAL_TABLE': jdbc_virtual_table
             })
-            params = dict()
             resource_url = urljoin(
                 self.service_url,
                 "workspaces/{}/datastores/{}/featuretypes.json".format(
@@ -894,7 +894,7 @@ class Catalog:
             raise ConflictingDataError(msg)
         if not overwrite or style is None:
             headers = {
-                "Content-type": "application/xml",
+                "Content-type": "application/vnd.ogc.sld+xml",
                 "Accept": "application/xml"
             }
             xml = "<style><name>{0}</name><filename>{0}.sld"\
