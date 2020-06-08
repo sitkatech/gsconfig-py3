@@ -894,7 +894,7 @@ class Catalog:
             raise ConflictingDataError(msg)
         if not overwrite or style is None:
             headers = {
-                "Content-type": "application/vnd.ogc.sld+xml",
+                "Content-type": "application/xml",
                 "Accept": "application/xml"
             }
             xml = "<style><name>{0}</name><filename>{0}.sld"\
